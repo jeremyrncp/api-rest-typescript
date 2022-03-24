@@ -4,11 +4,21 @@ import { intToRoman } from 'roman-arabic-converter';
 
 @Injectable()
 export class DateService {
-  dateValidation(date: string): string {
-    return validateDate(date, "boolean", "dd/mm/yyyy");
+  dateValidation(date: string): boolean {
+    if(!validateDate(date, "boolean", "dd/mm/yyyy")) {
+      throw "Invalid date format (valid format: dd/mm/YYYY)";
+    }
+
+    return true;
   }
+  convertFrenchDateToUsDate(date: string): string {
+    this.dateValidation(date);
+    const dateSplit = date.split('/');
+    return dateSplit[2] + "-" + dateSplit[1] + "-" + dateSplit[0];
+  }
+
   transformRomanDateToArabic(date: string): string {
-    if (this.dateValidation(date)) {
+      this.dateValidation(date);
       const dateSplit = date.split('/');
 
       const day: number = parseInt(dateSplit[0]);
@@ -16,8 +26,5 @@ export class DateService {
       const year: number = parseInt(dateSplit[2]);
 
       return intToRoman(day) + '/' + intToRoman(month) + '/' + intToRoman(year);
-    } else {
-      throw "Invalid date format (valid format: dd/mm/YYYY)";
-    }
   }
 }
