@@ -5,8 +5,8 @@ import {DateService} from "./date.service";
 export class ApiServiceDateController {
   constructor(private readonly dateService: DateService) {}
 
-  @Get("api/service/romantoarabicconverter")
-  getRomanToArabicConverter(@Query() query: {date: string}): string {
-      return this.dateService.transformRomanDateToArabic(query.date);
+  @Get("api/service/arabictoromanconverter")
+  getArabicToRomanConverter(@Query() query: {date: string}): string {
+      return this.dateService.transformArabicDateToRoman(query.date);
   }
 }

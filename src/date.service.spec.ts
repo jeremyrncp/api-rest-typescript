@@ -24,10 +24,10 @@ describe('DateService', () => {
 
   describe('Roman date', () => {
     it('should return an error when date isnt valid', () => {
-      expect(() => {dateService.transformRomanDateToArabic('invalid date');}).toThrow('Invalid date format (valid format: dd/mm/YYYY)');
+      expect(() => {dateService.transformArabicDateToRoman('invalid date');}).toThrow('Invalid date format (valid format: dd/mm/YYYY)');
     });
     it('should return a valid date', () => {
-      expect(dateService.transformRomanDateToArabic('01/01/2022')).toBe('I/I/MMXXII');
+      expect(dateService.transformArabicDateToRoman('01/01/2022')).toBe('I/I/MMXXII');
     });
   });
 });

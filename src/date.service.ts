@@ -17,7 +17,7 @@ export class DateService {
     return dateSplit[2] + "-" + dateSplit[1] + "-" + dateSplit[0];
   }
 
-  transformRomanDateToArabic(date: string): string {
+  transformArabicDateToRoman(date: string): string {
       this.dateValidation(date);
       const dateSplit = date.split('/');
 
